@@ -1,0 +1,35 @@
+{
+  "meta": { "title": "Pride and Prejudice characters", "subtitle": "Jane Austen, 1813", "version": "1.2" },
+  "nodes": [
+    { "id": "elizabeth", "name": "Elizabeth Bennet", "subtitle": "Second Bennet daughter", "groups": ["bennets"] },
+    { "id": "jane", "name": "Jane Bennet", "subtitle": "Eldest Bennet daughter", "groups": ["bennets"] },
+    { "id": "lydia", "name": "Lydia Bennet", "subtitle": "Youngest Bennet daughter", "groups": ["bennets"] },
+    { "id": "mr-bennet", "name": "Mr. Bennet", "subtitle": "Father of five daughters", "groups": ["bennets"] },
+    { "id": "mrs-bennet", "name": "Mrs. Bennet", "subtitle": "Eager matchmaker", "groups": ["bennets"] },
+    { "id": "darcy", "name": "Fitzwilliam Darcy", "subtitle": "Master of Pemberley", "groups": ["darcys"] },
+    { "id": "georgiana", "name": "Georgiana Darcy", "subtitle": "Darcy's younger sister", "groups": ["darcys"] },
+    { "id": "bingley", "name": "Charles Bingley", "subtitle": "Rents Netherfield" },
+    { "id": "wickham", "name": "George Wickham", "subtitle": "Militia officer" },
+    { "id": "collins", "name": "Mr. Collins", "subtitle": "Clergyman, the Bennets' cousin" },
+    { "id": "charlotte", "name": "Charlotte Lucas", "subtitle": "Elizabeth's best friend" }
+  ],
+  "edges": [
+    { "id": "e1", "source": "mr-bennet", "target": "elizabeth", "label": "father" },
+    { "id": "e2", "source": "mrs-bennet", "target": "jane", "label": "mother" },
+    { "id": "e3", "source": "jane", "target": "elizabeth", "label": "sisters", "bidirectional": true },
+    { "id": "e4", "source": "lydia", "target": "elizabeth", "label": "sisters", "bidirectional": true },
+    { "id": "e5", "source": "darcy", "target": "elizabeth", "label": "in love with" },
+    { "id": "e6", "source": "bingley", "target": "jane", "label": "in love with" },
+    { "id": "e7", "source": "darcy", "target": "bingley", "label": "friends", "bidirectional": true },
+    { "id": "e8", "source": "darcy", "target": "georgiana", "label": "brother" },
+    { "id": "e9", "source": "wickham", "target": "darcy", "label": "rival" },
+    { "id": "e10", "source": "wickham", "target": "georgiana", "label": "betrays" },
+    { "id": "e11", "source": "wickham", "target": "lydia", "label": "husband" },
+    { "id": "e12", "source": "collins", "target": "charlotte", "label": "husband" },
+    { "id": "e13", "source": "charlotte", "target": "elizabeth", "label": "best friends", "bidirectional": true }
+  ],
+  "groups": [
+    { "id": "bennets", "name": "The Bennets", "color": "#00B894" },
+    { "id": "darcys", "name": "The Darcys", "color": "#0984E3" }
+  ]
+}
