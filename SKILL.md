@@ -11,7 +11,7 @@ The format is documented at https://relationmap.io/docs/data-format.md and the A
 
 ## 1. Pick the cast
 
-10 to 40 characters reads well on one screen. For a bigger story, make one chart per family, faction or season, and say so. Write names the way the story does.
+Keep a chart to about 40 characters and 80 relationships. The editor opens a chart zoomed out to show all of it: on a laptop, 40 characters with 80 relationships open at about a third of full size. For a bigger story, make one chart per family, faction or season, and say so. Write names the way the story does.
 
 Only draw relationships the story states. If you are not sure about one, leave it out: readers of the story will notice a wrong line before anything else.
 
@@ -38,10 +38,24 @@ Only draw relationships the story states. If you are not sure about one, leave i
 The rules that matter most:
 
 - Every node has a unique short `id` and a `name`. `source` and `target` are ids, never names.
-- A label reads from source to target: `darcy → elizabeth, "in love with"` (Darcy is in love with Elizabeth), `wickham → georgiana, "betrays"`. A noun reads "source is target's label": `mr-bennet → elizabeth, "father"`. Use `"bidirectional": true` when it goes both ways (siblings, friends).
-- The label picks the line color by keyword: love, enemy, father, friend, mentor, ally, rival and their relatives. Some common words stay gray (married, uncle, teacher, colleague). The full list and its surprises are under "Relationship colors" in data-format.md; when a color matters, use a matching word or set `"color": "#RRGGBB"` on the edge.
+- A label reads from source to target: `darcy → elizabeth, "in love with"` (Darcy is in love with Elizabeth), `wickham → georgiana, "betrays"`. A noun reads "source is target's label": `mr-bennet → elizabeth, "father"`. Use `"bidirectional": true` only when the label reads both ways ("sisters", "friends"). It is what draws the second arrow; the label never does.
+- Draw at most one edge between two characters. A second edge is kept, but it is drawn on top of or right next to the first, so put both relationships in one label ("husband and cousin").
+- Keep each `subtitle` to about 30 characters or fewer: it is drawn on one line under the name and never wrapped. Longer notes go in `description`, which shows when the user clicks the character in the editor.
+- The label picks the line color by keyword: love, enemy, father, friend, mentor, ally, rival and their relatives. Matching is a plain substring test, so some common words stay gray (married, uncle, cousin, teacher, colleague, and plurals like enemies and allies). The full list and its surprises are under "Relationship colors" in data-format.md; when a color matters, use a matching word or set `"color": "#RRGGBB"` on the edge.
 - Groups are defined once in `groups` (with a `color`) and referenced by id from each node's `groups`. Tags work the same way.
-- Leave out `avatar` (image links written by an AI often don't load) and `position` (the editor lays the chart out and zooms to show all of it).
+- Leave out `avatar` (image links written by an AI often don't load). Leave out `position` too (the editor lays the chart out and zooms to show all of it), except in a family tree: see below.
+- Optional: `"meta": { "settings": { "avatarStyle": "notionists" } }` gives characters without a picture a drawn face instead of initials. The other styles are `lorelei`, `open-peeps`, `pixel-art` and `thumbs`.
+
+### Family trees
+
+- One edge from each parent to each child, labeled "father" or "mother". A child with both parents in the chart gets two edges.
+- One edge per marriage, from husband to wife, labeled "husband" (or wife to husband, "wife"), without `bidirectional`.
+- No edges between siblings: shared parents already show them.
+- Give every node a `position`: `{ "x": 0, "y": 0 }` in pixels, x to the right, y downward. One generation per row, oldest at the top, rows about 200 apart, people in a row at least 150 apart, spouses side by side. A node without one is placed by the automatic layout and can end up off screen.
+- "uncle", "aunt", "cousin", "nephew", "niece" and "married" are gray; color them with `customColorRules` (data-format.md, "Words for family trees").
+- Each child brings two edges, so a family tree often has 1.5 to 2 times as many relationships as people. Split a big family into branches.
+
+A complete example is under "Family trees" in https://relationmap.io/docs/ai.md.
 
 ## 3. Check it and make the link
 
