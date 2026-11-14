@@ -65,5 +65,5 @@ If you can't run code, give the JSON in one ```json block and tell the user to p
 
 ## Limits
 
-- A link carries up to 1 MB of chart data (counted after unpacking). Charts without pictures stay far below that: 40 characters and 60 relationships make a link of about 2,100 characters.
+- A link carries up to 1 MB of chart data (counted after unpacking). Charts without pictures stay far below that: a 40-person chart makes a link of about 3,000 characters.
 - Compressed links need Chrome 80, Firefox 113, Safari 16.4 or newer. `--plain` links work in any browser but are three to five times longer.
