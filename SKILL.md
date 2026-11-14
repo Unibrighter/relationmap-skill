@@ -38,20 +38,20 @@ Only draw relationships the story states. If you are not sure about one, leave i
 The rules that matter most:
 
 - Every node has a unique short `id` and a `name`. `source` and `target` are ids, never names.
-- A label reads "source is target's label": `darcy → elizabeth, "in love with"`. Use `"bidirectional": true` when it goes both ways (siblings, friends).
+- A label reads from source to target: `darcy → elizabeth, "in love with"` (Darcy is in love with Elizabeth), `wickham → georgiana, "betrays"`. A noun reads "source is target's label": `mr-bennet → elizabeth, "father"`. Use `"bidirectional": true` when it goes both ways (siblings, friends).
 - The label picks the line color by keyword: love, enemy, father, friend, mentor, ally, rival and their relatives. Some common words stay gray (married, uncle, teacher, colleague). The full list and its surprises are under "Relationship colors" in data-format.md; when a color matters, use a matching word or set `"color": "#RRGGBB"` on the edge.
 - Groups are defined once in `groups` (with a `color`) and referenced by id from each node's `groups`. Tags work the same way.
 - Leave out `avatar` (image links written by an AI often don't load) and `position` (the editor lays the chart out and zooms to show all of it).
 
 ## 3. Check it and make the link
 
-Save the JSON to a file and run the script in this skill's `scripts/` folder (Python 3, standard library only):
+Save the JSON to a file and run the script in this skill's `scripts/` folder (Python 3, standard library only). Use its full path, or run it from the skill's folder:
 
 ```bash
-python3 scripts/relationmap_link.py chart.json
+python3 <this skill's folder>/scripts/relationmap_link.py chart.json
 ```
 
-It prints errors (fix them and run again), warnings, a one-line summary and the link. `--check` only checks; `--plain` makes a link without compression.
+Errors, warnings and a one-line summary go to stderr; fix any errors and run again. The link is the only line on stdout, so `> link.txt` saves it. `--check` only checks; `--plain` makes a link without compression.
 
 No Python? The Node version is at https://relationmap.io/docs/ai.md#3-make-the-link-in-code.
 
